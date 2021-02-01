@@ -1,0 +1,27 @@
+F:\practice\maven\project1>
+Sonar runner   - set the env var
+Sonarqube-cd /bin - start the sonar qube
+Go to browser  :9000
+Sonar scanner :conf/sonar scanner.properties – in this specify the project key,version ,url(near sonar source)    Sonar.projectKey=JavaProject
+   Sonar.projectName=Java-Project
+  Sonar.projectVersion=1.0
+go to the url path  and  run the sonar
+Sonar.sources=f:/practice/mavne/project1/src/main/java/devops
+In maven goto  conf/settings.xml and add this
+             <pluginGroups>
+              <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+              </pluginGroups>
+And under profiles in the same file
+                  <profile>
+                      <id>sonar</id>
+                        <activation>
+                                <activeByDefault>true</activeByDefault>
+                           </activation>
+                                   <properties>
+                                         <sonar.host.url>        
+                             http://localhost:9000
+                                   </sonar.host.url>     
+                                      </properties>
+                                    </profile>
+Now stop the sonarqube server and run.
+Goto  maven server where pom file is present and run the mvn sonar:sonar command
